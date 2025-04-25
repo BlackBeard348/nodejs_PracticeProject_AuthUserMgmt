@@ -106,6 +106,18 @@ app.post("/register", (req, res) => {
     return res.status(404).json({message: "Unable to register user."});
 });
 
+// Add this after your existing routes, before app.listen
+app.get("/", (req, res) => {
+    res.json({ 
+        message: "Welcome to the Authentication API",
+        endpoints: {
+            register: "POST /register",
+            login: "POST /login",
+            friends: "GET /friends (Protected Route)"
+        }
+    });
+});
+
 
 const PORT =5000;
 
